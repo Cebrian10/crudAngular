@@ -1,0 +1,55 @@
+.contenedor {    
+    display: flex;
+    width: 100%;
+}
+
+.formulario {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+    background-color: #252525;
+    color: #ffffff;
+    padding: 1rem;
+    padding-inline: 2rem;
+    width: 50%;
+
+    & h1 {
+        padding-bottom: 1rem;
+        width: 100%;
+        text-align: start;
+    }
+}
+
+.btn-insertImg {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    & button {
+        padding-inline: 1rem;
+    }
+    
+}
+
+.information {
+    width: 50%;
+
+    & ul li img {
+        width: 10%;
+    }    
+}
+
+// .information-completa {
+//     margin-left: 1rem;
+// }
+
+.information-personal, .information-residencial {
+    display: flex;
+
+    & p {
+        margin-bottom: 0;
+        margin-left: 1rem;
+    }
+}
+
