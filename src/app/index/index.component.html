@@ -1,22 +1,22 @@
 <div class="contenedor">
-    <div class="formulario">
+    <div class="formulario" #formulario>
         <h1>Formulario de prueba</h1>
-        <form class="row g-3">
+        <form class="row g-3" (ngSubmit)="agregarElemento()">
             <div class="col-md-6">
-                <label class="form-label">Nombre</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="nombre">Nombre</label>
+                <input type="text" class="form-control" name="nombre" [(ngModel)]="nombre">
             </div>
             <div class="col-md-6">
-                <label class="form-label">Apellido</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="apellido">Apellido</label>
+                <input type="text" class="form-control" name="apellido" [(ngModel)]="apellido">
             </div>
             <div class="col-md-6">
-                <label class="form-label">País</label>
-                <input type="text" class="form-control">
+                <label class="form-label" for="pais">País</label>
+                <input type="text" class="form-control" name="pais" [(ngModel)]="pais">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Provincia</label>
-                <select class="form-select">
+                <select class="form-select" name="provincia" [(ngModel)]="provincia">
                     <option value="" disabled selected>Seleccionar...</option>
                     <option>Bocas del toro</option>
                     <option>Chiriqui</option>
@@ -27,10 +27,10 @@
             </div>
             <div class="col-12">
                 <label class="form-label">Dirección</label>
-                <input type="text" class="form-control" placeholder="Calle 50, Av. Ricardo J. Alfaro">
+                <input type="text" class="form-control" placeholder="Calle 50, Av. Ricardo J. Alfaro" name="direccion" [(ngModel)]="direccion">
             </div>
             <div class="col-12 btn-insertImg">
-                <input class="insertImg" type="file" accept="image/*">
+                <input class="insertImg" type="file" accept="image/*" name="image" (change)="onFileChange($event)">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
         </form>
@@ -38,7 +38,23 @@
 
     <section class="information">
         <ul class="list-group">
-            <li class="list-group-item d-flex align-items-center">
+            <li class="list-group-item d-flex align-items-center" *ngFor="let elemento of elementos">
+                <img [src]="elemento.image"> <!-- /assets/img/img_prueba.png-->
+                <div class="information-completa">
+                    <div class="information-personal">
+                        <label>{{ elemento.nombre }}</label>
+                        <label>{{ elemento.apellido }}</label>
+                    </div>
+                    <div class="information-residencial">
+                        <label>{{ elemento.pais }}</label>
+                        <label>{{ elemento.provincia }}</label>
+                        <label>{{ elemento.direccion }}</label>
+                    </div>
+                </div>
+            </li>
+
+
+            <!-- <li class="list-group-item d-flex align-items-center">
                 <img src="/assets/img/img_prueba.png">
                 <div class="information-completa">
                     <div class="information-personal">
@@ -53,7 +69,6 @@
                 </div>
             </li>
 
-
             <li class="list-group-item d-flex align-items-center">
                 <img src="/assets/img/img_prueba.png">
                 <div class="information-completa">
@@ -67,22 +82,7 @@
                         <label>Direccion</label>
                     </div>
                 </div>
-            </li>
-
-            <li class="list-group-item d-flex align-items-center">
-                <img src="/assets/img/img_prueba.png">
-                <div class="information-completa">
-                    <div class="information-personal">
-                        <label>Nombre</label>
-                        <label>Apellido</label>
-                    </div>
-                    <div class="information-residencial">
-                        <label>Pais</label>
-                        <label>Provincia</label>
-                        <label>Direccion</label>
-                    </div>
-                </div>
-            </li>
+            </li> -->
         </ul>
     </section>
 </div>
